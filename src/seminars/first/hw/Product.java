@@ -1,23 +1,14 @@
 package seminars.first.hw;
 
-public class Product {
-    private int cost; // Стоимость продукта
-    private String title; // Название
+public class Product implements Comparable<Product> {
+    private Integer cost;
+    private String title;
 
-    public Product(){
-        this.cost = 0;
-        this.title = "";
-    }
-
-    public  Product(int cost, String title){
-        this.cost = cost;
-        this.title = title;
-    }
-    public int getCost() {
+    public Integer getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(Integer cost) {
         this.cost = cost;
     }
 
@@ -29,8 +20,16 @@ public class Product {
         this.title = title;
     }
 
+    /**
+     * Задаем критерии упорядочивания объектов:
+     * ompareTo в Java сравнивает вызывающий объект с объектом,
+     * переданным в качестве параметра и возвращает в результате выполнения сравнения целое число:
+     * положительное, если вызывающий объект больше объекта, переданного в качестве параметра;
+     * отрицательное, если вызывающий объект меньше объекта, переданного в качестве параметра;
+     * 0, если объекты равны
+     */
     @Override
-    public String toString() {
-        return "Продукт: " + this.title + " стоит " + this.cost + " рублей";
+    public int compareTo(Product product) {
+        return this.getCost().compareTo(product.getCost());
     }
 }
